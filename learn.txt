@@ -1,0 +1,142 @@
+Smallest addressable memory used by a computer - Byte
+Word - 2 Bytes - 16 bits 
+DoubleWord - Integer - 2 Words - 4 Bytes - 32 bits
+Quad Word - 2 Dwords -4 Words - 8 Bytes - 64 Bits
+XMM Words - Paragraph - 2 Quad Words - 8 Words - 16 Bytes - 128 Bits
+YMM Words - 2 xMM Words - 4 Quad Words - 16 Words - 32 Bytes - 256 Bits
+
+Bytes - Quad Words have both signed and unsigned versions
+Unsigned Byte -> 0 to 2^8 -1
+Signed Byte   -> -128 to 127    -> -2^7 to 2^7-1
+Unsgned Words -> 0 to 2^16-1
+Signed Words  -> -2^15 to -2^15-1
+
+MSB is the signed bit
+
+#8086 Register:-
+	Registers are on CPU itself hence very fast, they dont have an address or data type YOu cant point to a register
+	2 Bytes Register = 16 bits = 1 Word
+	ax - accumulator 
+		- Split into AH and AL (1 byte each)
+	bx - Base
+		- Split into BH and BL (1 byte each)
+	cx - Cante
+		- Split into CH and CL (1 byte each)
+	dx - Data
+		- Split into DH and DL (1 byte each)
+
+	Note:- AX is dependent on AL and AH, thus changing AL or AH will change AX.
+	Eg:- 
+		mox AL, 4 ; Makes AX = 4
+		mov AH, 1 ; Makes AX = 260
+
+	SI - Source index - General purpose - special use in manip string
+	DI - Destination Index - General purpose - special use in manip string
+	BP - Base Pointer 
+	SP - Stack Pointer
+	
+	IP - Instruction Pointer
+
+	CS - Code Segment 
+	DS - Data Segment - Start of Segment
+	SS - Stack Segment - Stacr Segment
+	CS - Extra
+
+https://www.recurse.com/blog/7-understanding-c-by-learning-assembly
+#386/486 - 32 BIT - 4 Byte
+
+EAX -
+    - Function return value is always stored in EAX
+    - Lower 16 bits = AX (in 8086)
+    - And AX is split into AH and AL - 8 bits each
+EBX - Same
+ECX - Same
+EDX - Same
+
+ESI - Extra source index
+    - Lower 16 bits = SI
+EDI 
+EBP - is the base pointer, which points to the base of the current stack frame
+ESP - is the stack pointer, which points to the top of the current stack frame
+Note:- EBP > ESP because the stack starts at a high memory address and grows downwards.
+
+EIP - Points to the next instruction the CPU will execute.
+    - Goes from Low to High.
+    - Can't Move Data into in IP (mov EIP, 40 - X)
+    - Need to use JMP to mov change value in EIP.
+
+FLAGS  - Used to make decisions for compare and jmp
+    
+FS
+GS
+CS
+DS
+SS
+ES 
+
+#x64 - 64 Bit - 8 Byte
+RAX - 
+    EAX, AX, AL and AH is still supported 
+RBX - 
+RCX - 
+RDX - 
+
+RSI - 
+    - Supports ESI, SI, SIL (no SIH)
+RDI - 
+RBP - 
+RSP - 
+
+RIP - 
+    - Support EIp an ip
+
+New Reg:- 8 Registers
+R7
+    - represented as r7x in instructions
+R8
+    - Support R8D (lower 32 bit - double word)
+    - Support R8W (lower 16 bit - word)
+    - Support R8B (lower 8 bit - byte)
+R9
+.
+.
+.
+.
+R15
+
+No DS, ES and SS, only CS, FS and GS supported since we use flat memory
+
+# AT&T Syntax -  mnemonic source, destination
+# Intel Syntax -  mnemonic destination, source
+Intel:-
+	mov al, 23;
+	mov bl, 6;
+	add al, bl ; result stored in al
+
+AT&T:-  Said to be faster tan intel
+	movb $23, %al;
+	movb $6, %bl;	
+	addb %bl, %al;
+$ indicates immediate value
+have data type you are working on along with the instruction.
+w = Eord
+b = Byte
+l = long/double word (32 bit)
+q = QWord (64 bit)
+
+set disassemble-next-line on
+Assemble is NOT case sensitive
+
+3 Types of Operands:-
+a. Register - reg - EAX, RAX .....
+b. Memory - -mem - Variables 
+c. Immediate - mem - Number
+
+Note:-
+	Can't use 2 memon same instruction
+
+Assembly is etched into the CPU chip.
+
+Assembly is the fastest language,
+
+

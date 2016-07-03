@@ -1,0 +1,4 @@
+SHL [op1], [op2] ; Shift left with carry in carry flag - Multiply
+SHR [op1], [op2] ; Shift right for unsigned number since signed bit is ignored - Divide
+SAR [op1], [op2] ; Shift right for signed number, taking the signed bit into consideration - Divide
+

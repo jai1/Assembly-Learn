@@ -1,0 +1,14 @@
+In x64 the 1st 6 integer values are passed in registers
+void fn(int a, char b, unsigned long int q)
+- RDI - a stored in EDI
+- RSI - stores b
+- RDX - stores q
+- RCX
+- R8
+- R9
+
+Return,, when return from a fn asssembler asuemes return value is in :-
+AL - char and bool
+AX - short
+EAX - int
+RAX - long
